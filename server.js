@@ -41,9 +41,16 @@ async.retry(
     if (err) {
       return console.error("Giving up");
     }
-    console.log("Connected to db");
+    console.log("****************** Connected to db **********************");
     getVotes(client);
+      
+    console.log("****************** CREATING TABLE VOTES **********************");  
+    client.query('CREATE TABLE votes (id INT, vote VARCHAR(10))',(err,result)=>{
+    console.log(err,result)
+})
   }
+   
+    
 );
 
 function getVotes(client) {
